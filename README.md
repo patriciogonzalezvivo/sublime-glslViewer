@@ -1,3 +1,5 @@
+![](http://patriciogonzalezvivo.com/images/glslViewer.gif)
+
 Sublime Text 2 plugin for live-coding GLSL Shaders using glslViewer ( MACOS X and Linux only).
 
 ## Installation
