@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Open shader with GLSLViewer",
+        "command": "openshader"
+    }
+]
