@@ -13,4 +13,4 @@ git clone
 
 ## Usage
 
-Every time you open a ```.frag``` or ```.fs``` it will open it with ```glslViewer``` which will reload it every time you save it.
+Every time you open a ```.frag``` or ```.fs``` file it will render it through ```glslViewer``` which will reload the shader every time you save it ;)
