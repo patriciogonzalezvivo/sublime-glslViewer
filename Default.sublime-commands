@@ -1,6 +1,6 @@
 [
     {
-        "caption": "Open shader with GLSLViewer",
+        "caption": "Open fragment shader with GLSLViewer",
         "command": "openshader"
     }
 ]
