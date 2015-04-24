@@ -2,7 +2,7 @@ Sublime Text 2 plugin for live-coding GLSL Shaders using glslViewer ( MACOS X an
 
 ## Installation
 1. Install [glslViewer](https://github.com/patriciogonzalezvivo/glslViewer)
-2. Clone this repository on you ```Packeges``` Folder. For example:
+2. Clone this repository on you ```Packages``` Folder. For example:
 
 ```bash
 cd ~/Library/Application Support/Sublime Text 2/Packages/
