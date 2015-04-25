@@ -1,0 +1,5 @@
+{
+	// Path where glslViewer is installed
+	// If is not installed follow the instractions at https://github.com/patriciogonzalezvivo/glslViewer
+	"path": "/usr/local/bin/"
+}

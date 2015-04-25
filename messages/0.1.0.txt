@@ -1,0 +1,3 @@
+Don't forget to install glslViewer ( https://github.com/patriciogonzalezvivo/glslViewer ).
+
+Note: By default will be installed on ```/usr/local/bin``` if that's not the case edit it the ```glslViewer.sublime-settings``` file.
