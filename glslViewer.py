@@ -1,5 +1,5 @@
 # Author @patriciogv - 2015
-# http://patriciogonzalezvivo.com
+# http://patricio.io
 
 import sublime, sublime_plugin, os, subprocess
 
