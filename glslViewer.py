@@ -9,6 +9,14 @@ def openShader(shaderFile):
     if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
         settings = sublime.load_settings('glslViewer.sublime-settings')
         path = settings.get('path')
+        bTextures = False
+        view = sublime.active_window().active_view()
+        sels = view.sel()
+        for sel in sels:
+            if view.substr(sel).find('sampler2D') != -1:
+                bTextures = True
+        if bTextures:
+            sublime.status_message("This shader use textures!")
         arg = [path+'glslViewer', shaderFile]
         subprocess.Popen(arg)
 
