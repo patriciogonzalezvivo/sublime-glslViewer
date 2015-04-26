@@ -3,14 +3,14 @@
 
 import sublime, sublime_plugin, os, subprocess
 
-version = "0.1.0"
+version = "0.2.0"
 
 def openShader(shaderFile):
     if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
         settings = sublime.load_settings('glslViewer.sublime-settings')
         path = settings.get('path')
         arg = [path+'glslViewer', shaderFile]
-        subprocess.Popen(arg)    
+        subprocess.Popen(arg)
 
 class GlslViewerCommand(sublime_plugin.EventListener):
     def on_load(self,view):
@@ -43,8 +43,3 @@ class newshaderCommand(sublime_plugin.WindowCommand):
     def run(self):
         newView = self.window.new_file()
         newView.run_command('glsltemplate')
-
-
-
-
-        
