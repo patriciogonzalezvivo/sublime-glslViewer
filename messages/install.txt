@@ -1,3 +1,8 @@
-Don't forget to install glslViewer ( https://github.com/patriciogonzalezvivo/glslViewer ).
+glslViewer Plugin for Sublime Text
+-----------------------------------
+
+This pluging use a 3erd party application glslViewer for rendering the fragment shaders. Don't forget to install it first.
+
+For that go to https://github.com/patriciogonzalezvivo/glslViewer and follow the instructions
 
 Note: By default will be installed on ```/usr/local/bin``` if that's not the case edit it the ```glslViewer.sublime-settings``` file.

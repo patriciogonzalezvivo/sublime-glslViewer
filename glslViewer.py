@@ -1,7 +1,7 @@
 # Author @patriciogv - 2015
 # http://patricio.io
 
-import sublime, sublime_plugin, os, subprocess
+import sublime, sublime_plugin, os, subprocess, sys
 
 version = "0.2.0"
 process = {}
@@ -14,12 +14,20 @@ def openShader(shaderFile):
         # texturesLines = view.find_all('uniform sampler2D ')
         # if len(texturesLines) > 0:
         #     sublime.message_dialog('This shader use ' + str(len(texturesLines)) + ' textures. So far this textures can not be loaded, we are working to support this in future versions. Thank you.')
-        arg = [path+'glslViewer', shaderFile]
-        process[shaderFile] = subprocess.Popen(arg)
+        cmd = [path+'glslViewer', shaderFile]
+        process[shaderFile] = subprocess.Popen(cmd) #, stdout=subprocess.PIPE)
+
 
 class GlslViewerCommand(sublime_plugin.EventListener):
     def on_load(self,view):
         openShader(view.file_name())
+    def on_post_save(self,view):
+        shaderFile = view.file_name()
+        if shaderFile in process:
+            if process[shaderFile] is not None:
+                if process[shaderFile].stdout is not None:
+                    print(process[shaderFile].stdout.readline())
+
     def on_close(self,view):
         shaderFile = view.file_name()
         if shaderFile in process:
