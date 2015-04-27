@@ -4,25 +4,36 @@
 import sublime, sublime_plugin, os, subprocess
 
 version = "0.2.0"
+process = {}
 
 def openShader(shaderFile):
     if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
         settings = sublime.load_settings('glslViewer.sublime-settings')
         path = settings.get('path')
-        bTextures = False
         view = sublime.active_window().active_view()
-        sels = view.sel()
-        for sel in sels:
-            if view.substr(sel).find('sampler2D') != -1:
-                bTextures = True
-        if bTextures:
-            sublime.status_message("This shader use textures!")
+        texturesLines = view.find_all('uniform sampler2D ')
+        if len(texturesLines) > 0:
+            sublime.message_dialog('This shader use ' + str(len(texturesLines)) + ' textures. So far this textures can not be loaded, we are working to support this in future versions. Thank you.')
+
         arg = [path+'glslViewer', shaderFile]
-        subprocess.Popen(arg)
+        process[shaderFile] = subprocess.Popen(arg)
 
 class GlslViewerCommand(sublime_plugin.EventListener):
     def on_load(self,view):
         openShader(view.file_name())
+    def on_post_save(self,view):
+        shaderFile = view.file_name()
+        if shaderFile in process:
+            if process[shaderFile].poll() is not None:
+                openShader(shaderFile)
+
+    def on_close(view):
+        sublime.message_dialog('Im gona ')
+        # shaderFile = view.file_name()
+        # sublime.message_dialog('kill '+shaderFile)
+        # if shaderFile in process:
+        #     process[shaderFile].kill()
+        #     del process[shaderFile]
 
 class openshaderCommand(sublime_plugin.WindowCommand):
     def run(self):
