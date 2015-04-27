@@ -21,19 +21,18 @@ def openShader(shaderFile):
 class GlslViewerCommand(sublime_plugin.EventListener):
     def on_load(self,view):
         openShader(view.file_name())
-    def on_post_save(self,view):
+    def on_activated(self,view):
         shaderFile = view.file_name()
         if shaderFile in process:
             if process[shaderFile].poll() is not None:
                 openShader(shaderFile)
 
-    def on_close(view):
-        sublime.message_dialog('Im gona ')
-        # shaderFile = view.file_name()
-        # sublime.message_dialog('kill '+shaderFile)
-        # if shaderFile in process:
-        #     process[shaderFile].kill()
-        #     del process[shaderFile]
+    def on_close(self,view):
+        shaderFile = view.file_name()
+        sublime.message_dialog('kill '+shaderFile)
+        if shaderFile in process:
+            process[shaderFile].kill()
+            del process[shaderFile]
 
 class openshaderCommand(sublime_plugin.WindowCommand):
     def run(self):
