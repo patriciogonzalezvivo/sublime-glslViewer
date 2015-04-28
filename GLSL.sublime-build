@@ -1,0 +1,4 @@
+{
+	"path": "/usr/local/bin",
+	"cmd": ["glslViewer", "$file"]
+}
