@@ -3,7 +3,7 @@
 
 import sublime, sublime_plugin, os, subprocess, sys
 
-version = "0.3.0"
+version = "0.3.1"
 
 def openShader(view):
     shaderFile = view.file_name()
