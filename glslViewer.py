@@ -3,19 +3,20 @@
 
 import sublime, sublime_plugin, os, subprocess, sys
 
-version = "0.2.0"
+version = "0.3.0"
 
 def openShader(view):
     shaderFile = view.file_name()
-    if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
-        settings = sublime.load_settings('glslViewer.sublime-settings')
-        path = settings.get('path')
-        texturesLines = view.find_all('sampler2D')
-        if len(texturesLines) > 0:
-            sublime.message_dialog('This shader use ' + str(len(texturesLines)) + ' textures. So far this textures can not be loaded, we are working to support this in future versions. Thank you.')
-            # for line in texturesLines:
-            #     sublime.message_dialog(line(line))
-        sublime.active_window().run_command('exec',{'cmd':[path+'glslViewer', shaderFile]})
+    settings = sublime.load_settings('glslViewer.sublime-settings')
+    if settings.get('auto-start'):
+        if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
+            path = settings.get('path')
+            texturesLines = view.find_all('sampler2D')
+            if len(texturesLines) > 0:
+                sublime.message_dialog('This shader use ' + str(len(texturesLines)) + ' textures. So far this textures can not be loaded, we are working to support this in future versions. Thank you.')
+                # for line in texturesLines:
+                #     sublime.message_dialog(line(line))
+            sublime.active_window().run_command('exec',{'cmd':[path+'glslViewer', shaderFile]})
 
 
 class GlslViewerCommand(sublime_plugin.EventListener):
