@@ -2,6 +2,8 @@
 
 ![](http://patriciogonzalezvivo.com/images/glslViewer.gif)
 
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BQMKQJDQ9XH6)
+
 Sublime Text 2 plugin for live-coding GLSL Shaders using glslViewer ( MACOS X and Linux only).
 
 ## Installation
@@ -20,6 +22,7 @@ Every time you open a ```.frag``` or ```.fs``` file it will render it through ``
 ## Author
 
 [Patricio Gonzalez Vivo](http://https://twitter.com/patriciogv): [github](https://github.com/patriciogonzalezvivo) | [twitter](http://https://twitter.com/patriciogv) | [website](http://patricio.io)
+
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">

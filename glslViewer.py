@@ -1,7 +1,7 @@
 # Author @patriciogv - 2015
 # http://patricio.io
 
-import sublime, sublime_plugin, os, subprocess, sys
+import sublime, sublime_plugin, os, subprocess, sys, re
 
 version = "0.3.1"
 
@@ -11,11 +11,21 @@ def openShader(view):
     if settings.get('auto-start'):
         if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
             path = settings.get('path')
-            texturesLines = view.find_all('sampler2D')
-            if len(texturesLines) > 0:
-                sublime.message_dialog('This shader use ' + str(len(texturesLines)) + ' textures. So far this textures can not be loaded, we are working to support this in future versions. Thank you.')
-                # for line in texturesLines:
-                #     sublime.message_dialog(line(line))
+            textures = []
+            if len(view.find_all('uniform sampler2D')) > 0:
+                fp = open(shaderFile)
+                while 1:
+                    line = fp.readline()
+                    if not line:
+                        break
+                    result = re.search(r'(uniform)\s+(sampler2D)\s+(\w*)', line)
+                    # result = re.search(r'((uniform\s+sampler2D\s+\K)(\w)*)', line)
+                    if result != None:
+                        textures.append(result.group(3));
+
+                for tex in textures:
+                    sublime.message_dialog(tex);
+
             sublime.active_window().run_command('exec',{'cmd':[path+'glslViewer', shaderFile]})
 
 
