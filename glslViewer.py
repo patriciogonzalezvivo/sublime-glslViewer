@@ -10,23 +10,29 @@ def openShader(view):
     settings = sublime.load_settings('glslViewer.sublime-settings')
     if settings.get('auto-start'):
         if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
-            path = settings.get('path')
-            textures = []
+            cmd = []
+            cmd.append(settings.get('path')+'glslViewer')
+            cmd.append(shaderFile)
             if len(view.find_all('uniform sampler2D')) > 0:
                 fp = open(shaderFile)
+                textures = []
                 while 1:
                     line = fp.readline()
                     if not line:
                         break
                     result = re.search(r'(uniform)\s+(sampler2D)\s+(\w*)', line)
-                    # result = re.search(r'((uniform\s+sampler2D\s+\K)(\w)*)', line)
                     if result != None:
-                        textures.append(result.group(3));
-
+                        textures.append(result.group(3))
                 for tex in textures:
-                    sublime.message_dialog(tex);
-
-            sublime.active_window().run_command('exec',{'cmd':[path+'glslViewer', shaderFile]})
+                    def done(filename):
+                        cmd.append('-'+tex+" "+filename)
+                        if tex is textures[-1]:
+                            sublime.active_window().run_command('exec',{'cmd':cmd})
+                    def cancel():
+                        return
+                    sublime.active_window().show_input_panel("Load "+tex+" width: ", "*.png", done, None, cancel)
+            else:
+                sublime.active_window().run_command('exec',{'cmd':cmd})
 
 
 class GlslViewerCommand(sublime_plugin.EventListener):
