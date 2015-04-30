@@ -2,7 +2,7 @@
 
 ![](http://patriciogonzalezvivo.com/images/glslViewer.gif)
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BQMKQJDQ9XH6" style="float: right;)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BQMKQJDQ9XH6)
 
 Sublime Text 2 plugin for live-coding GLSL Shaders using glslViewer ( MACOS X and Linux only).
 
