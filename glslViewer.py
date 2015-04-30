@@ -3,7 +3,7 @@
 
 import sublime, sublime_plugin, os, subprocess, sys, re
 
-version = "0.3.1"
+version = "0.4.0"
 
 def openShader(view):
     shaderFile = view.file_name()
@@ -13,9 +13,16 @@ def openShader(view):
             cmd = []
             cmd.append(settings.get('path')+'glslViewer')
             cmd.append(shaderFile)
+            os.chdir(os.path.dirname(shaderFile))
             if len(view.find_all('uniform sampler2D')) > 0:
                 fp = open(shaderFile)
                 textures = []
+                images = []
+                default = "*.png"
+                for file in os.listdir(os.getcwd()):
+                    if file.endswith(".jpg") or file.endswith(".JPG") or file.endswith(".png") or file.endswith(".PNG"):
+                        default = file
+                        break
                 while 1:
                     line = fp.readline()
                     if not line:
@@ -23,14 +30,19 @@ def openShader(view):
                     result = re.search(r'(uniform)\s+(sampler2D)\s+(\w*)', line)
                     if result != None:
                         textures.append(result.group(3))
-                for tex in textures:
+                def askForTexture(i):
                     def done(filename):
-                        cmd.append('-'+tex+" "+filename)
-                        if tex is textures[-1]:
+                        cmd.append('--'+textures[i])
+                        cmd.append(os.path.abspath(filename))
+                        if textures[i] == textures[-1]:
                             sublime.active_window().run_command('exec',{'cmd':cmd})
+                        else:
+                            askForTexture(i+1)
                     def cancel():
                         return
-                    sublime.active_window().show_input_panel("Load "+tex+" width: ", "*.png", done, None, cancel)
+                    sublime.active_window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
+
+                askForTexture(0)
             else:
                 sublime.active_window().run_command('exec',{'cmd':cmd})
 
