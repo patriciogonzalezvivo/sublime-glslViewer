@@ -35,16 +35,16 @@ def openShader(view):
                         cmd.append('--'+textures[i])
                         cmd.append(os.path.abspath(filename))
                         if textures[i] == textures[-1]:
-                            sublime.active_window().run_command('exec',{'cmd':cmd})
+                            view.window().run_command('exec',{'cmd':cmd})
                         else:
                             askForTexture(i+1)
                     def cancel():
                         return
-                    sublime.active_window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
+                    view.window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
 
                 askForTexture(0)
             else:
-                sublime.active_window().run_command('exec',{'cmd':cmd})
+                view.window().run_command('exec',{'cmd':cmd})
 
 
 class GlslViewerCommand(sublime_plugin.EventListener):
