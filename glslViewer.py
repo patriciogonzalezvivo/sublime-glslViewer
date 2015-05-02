@@ -10,9 +10,7 @@ import re
 import sublime
 import sublime_plugin
 
-version = "0.4.1"
-
-_os = platform.system()
+version = "0.4.3"
 
 def openShader(view):
     shaderFile = view.file_name()
@@ -44,27 +42,16 @@ def openShader(view):
                         cmd.append('--'+textures[i])
                         cmd.append(os.path.abspath(filename))
                         if textures[i] == textures[-1]:
-                            if _os == 'Darwin':
-                                sublime.active_window().run_command('exec',{'cmd':cmd})
-                            elif _os == 'Linux':
-                                view.window().run_command('exec',{'cmd':cmd})
+                            sublime.active_window().run_command('exec',{'cmd':cmd})
                         else:
                             askForTexture(i+1)
                     def cancel():
                         return
-
-                    if _os == 'Darwin':
-                        sublime.active_window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
-                    elif _os == 'Linux':
-                        view.window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
-
+                    sublime.active_window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
+                    
                 askForTexture(0)
             else:
-                if _os == 'Darwin':
-                    sublime.active_window().run_command('exec',{'cmd':cmd})
-                elif _os == 'Linux':
-                    view.window().run_command('exec',{'cmd':cmd})
-
+                sublime.active_window().run_command('exec',{'cmd':cmd})
 
 class GlslViewerCommand(sublime_plugin.EventListener):
     def on_load(self,view):
