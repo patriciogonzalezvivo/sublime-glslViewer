@@ -20,10 +20,22 @@ git clone https://github.com/patriciogonzalezvivo/sublime-glslViewer.git
 
 Every time you open a ```.frag``` or ```.fs``` file it will render it through ```glslViewer``` which will reload the shader every time you save it.
 
-If the shader containg ```uniform sampler2D``` a input label will apear down your Sublime Windows where you can enter the absolute or relative path to the image you want to load.
+If the shader contain any ```uniform sampler2D```, a input label will apear down your Sublime Windows where you can enter the absolute or relative path to the image you want to load.
 
 This plugin adds a GLSL *Build System* to re lunch `glslViewer` by pressing `Ctr`+`b` and also adds a command to *"create a new fragment shader template for glslViewer"* you can use to start working on a new shader.
 
+## Suggestions
+
+This plugin plays really well with this two other plugins:
+
+* [Open​GL Shading Language (GLSL)](https://github.com/euler0/sublime-glsl)
+
+* [Auto-save](https://packagecontrol.io/packages/auto-save)
+
+## License
+
+[MIT License](https://raw.githubusercontent.com/patriciogonzalezvivo/sublime-glslViewer/master/LICENSE)
+
 ## Author
 
-[Patricio Gonzalez Vivo](http://https://twitter.com/patriciogv): [github](https://github.com/patriciogonzalezvivo) | [twitter](http://https://twitter.com/patriciogv) | [website](http://patricio.io)
+glslViewer and this plugin was created and maintained by [Patricio Gonzalez Vivo](http://https://twitter.com/patriciogv): [github](https://github.com/patriciogonzalezvivo) | [twitter](http://https://twitter.com/patriciogv) | [website](http://patricio.io)
