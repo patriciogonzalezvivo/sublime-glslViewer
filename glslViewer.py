@@ -10,7 +10,7 @@ import re
 import sublime
 import sublime_plugin
 
-version = "0.4.3"
+version = "0.4.4"
 
 def openShader(view):
     shaderFile = view.file_name()
