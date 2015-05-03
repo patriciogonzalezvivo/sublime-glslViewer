@@ -21,15 +21,17 @@ def openShader(view):
             cmd.append(settings.get('path')+'glslViewer')
             cmd.append(shaderFile)
             os.chdir(os.path.dirname(shaderFile))
-            if len(view.find_all('uniform sampler2D')) > 0:
+            nTextures = len(view.find_all('uniform sampler2D'))
+            if nTextures > 0:
                 fp = open(shaderFile)
                 textures = []
                 images = []
-                default = "*.png"
                 for file in os.listdir(os.getcwd()):
                     if file.endswith(".jpg") or file.endswith(".JPG") or file.endswith(".png") or file.endswith(".PNG"):
-                        default = file
-                        break
+                        images.append(file)
+                    if len(images) >= nTextures:
+                        break;
+                images.append("*.png")
                 while 1:
                     line = fp.readline()
                     if not line:
@@ -47,7 +49,8 @@ def openShader(view):
                             askForTexture(i+1)
                     def cancel():
                         return
-                    sublime.active_window().show_input_panel("Load "+textures[i]+" width: ", default, done, None, cancel)
+
+                    sublime.active_window().show_input_panel("Load "+textures[i]+" width: ", images[i % len(images)], done, None, cancel)
                     
                 askForTexture(0)
             else:
