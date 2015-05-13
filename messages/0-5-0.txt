@@ -1,0 +1,10 @@
+Update
+---------
+
+Hi! Good news for you, now glslViewer now supports vertex files together with geometry models files (.ply and .obj for the moment). This last update of your plugin requires that you compile and install the last version of glslViewer.
+
+For that go to https://github.com/patriciogonzalezvivo/glslViewer and follow the instructions.
+
+Thanks and sorry for any inconvenient. 
+
+Note: By default will be installed on ```/usr/local/bin``` if that's not the case edit it the ```glslViewer.sublime-settings``` file.

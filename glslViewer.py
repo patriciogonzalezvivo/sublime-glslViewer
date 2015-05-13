@@ -10,24 +10,49 @@ import re
 import sublime
 import sublime_plugin
 
-version = "0.4.4"
+version = "0.5.0"
+
+def haveExt(_file,_extentions):
+    rta = False
+    if isinstance(_extentions, list): 
+        for ext in _extentions:
+            if os.path.splitext(_file)[1] == ext:
+                rta = True
+                break
+    else:
+        rta = os.path.splitext(_file)[1] == _extentions
+    return rta
 
 def openShader(view):
     shaderFile = view.file_name()
     settings = sublime.load_settings('glslViewer.sublime-settings')
     if settings.get('auto-start'):
-        if shaderFile.endswith('.frag') or shaderFile.endswith('.fs'):
+        if haveExt(shaderFile, '.frag'):
             cmd = []
             cmd.append(settings.get('path')+'glslViewer')
-            cmd.append(shaderFile)
+            # cmd.append(shaderFile)
             os.chdir(os.path.dirname(shaderFile))
+
+            basename = os.path.basename(shaderFile)
+            images = []
+
+            for elementOnDir in os.listdir('.'):
+                file = os.path.basename(elementOnDir)
+                if os.path.splitext(basename)[0] == os.path.splitext(file)[0]:
+                    if haveExt(file, ['.jpg','.JPG','.jpeg','.JPEG','.png','.PNG']):
+                        images.append(file)
+                    if haveExt(file, ['.frag','.fs','.vert','.vs','.ply','.obj']):
+                        cmd.append(file)
+                    
             nTextures = len(view.find_all('uniform sampler2D'))
-            if nTextures > 0:
+            if nTextures == 1 and len(images) == 1:
+                cmd.append(images[0])
+                sublime.active_window().run_command('exec',{'cmd':cmd})
+            elif nTextures > 0:
                 fp = open(shaderFile)
                 textures = []
-                images = []
-                for file in os.listdir(os.getcwd()):
-                    if file.endswith(".jpg") or file.endswith(".JPG") or file.endswith(".png") or file.endswith(".PNG"):
+                for file in os.listdir('.'):
+                    if haveExt(file, ['.jpg','.JPG','.png','.PNG']):
                         images.append(file)
                     if len(images) >= nTextures:
                         break;
