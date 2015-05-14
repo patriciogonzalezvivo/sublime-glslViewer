@@ -22,6 +22,12 @@ Every time you open a ```.frag``` or ```.fs``` file it will render it through ``
 
 If the shader contain any ```uniform sampler2D```, a input label will apear down your Sublime Windows where you can enter the absolute or relative path to the image you want to load.
 
+Also if you have a ```.vert``` file and/or 3D model (```.ply``` or ```.obj```) with the same name it will open them automatically. 
+
+![](http://patriciogonzalezvivo.com/images/glslViewer-3D.gif)
+
+## Extra commands
+
 This plugin adds a GLSL *Build System* to re lunch `glslViewer` by pressing `Ctr`+`b` and also adds a command to *"create a new fragment shader template for glslViewer"* you can use to start working on a new shader.
 
 ## Suggestions
