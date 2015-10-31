@@ -1,7 +1,2 @@
 {
-    "*": {
-        "*": [
-            "OpenGL Shading Language (GLSL)"
-        ]
-    }
 }
