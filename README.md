@@ -4,7 +4,7 @@
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BQMKQJDQ9XH6)
 
-Sublime Text 2 plugin for live-coding GLSL Shaders using glslViewer ( MACOS X and Linux only).
+Sublime Text plugin for live-coding GLSL Shaders using glslViewer ( MACOS X and Linux only).
 
 ## Installation
 1. Install [glslViewer](https://github.com/patriciogonzalezvivo/glslViewer). By default it will be installed on ```/usr/local/bin``` if that's not the case edit it the ```glslViewer.sublime-settings``` file once you finish this steps.
