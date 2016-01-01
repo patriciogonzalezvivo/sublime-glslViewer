@@ -1,4 +1,4 @@
-# GLSL Viewer plugin for Sublime Text 2
+# GLSL Viewer plugin for Sublime Text
 
 ![](http://patriciogonzalezvivo.com/images/glslViewer.gif)
 
