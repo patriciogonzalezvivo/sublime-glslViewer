@@ -10,7 +10,7 @@ import re
 import sublime
 import sublime_plugin
 
-version = "0.5.0"
+version = "1.5.0"
 
 def haveExt(_file,_extentions):
     rta = False

@@ -1,11 +1,11 @@
 [
-    {
-        "caption": "Open fragment shader with GLSLViewer",
-        "command": "openshader"
-    },
+  {
+    "caption": "Open fragment shader with GLSLViewer",
+    "command": "openshader"
+  },
 
-    {
-        "caption": "Create a new fragment shader template for GLSLViewer",
-        "command": "newshader"
-    }
+  {
+    "caption": "Create a new fragment shader template for GLSLViewer",
+    "command": "newshader"
+  }
 ]
