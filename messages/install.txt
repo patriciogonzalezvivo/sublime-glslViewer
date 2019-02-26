@@ -1,14 +1,14 @@
 
-Install
----------
+Installation
+------------
 
-This pluging use a 3erd party application glslViewer for rendering the fragment shaders. Please don't forget to install it first. 
+This plugin uses a third-party application glslViewer for rendering the fragment shaders. Please don't forget to install it first. 
 
-For that go to https://github.com/patriciogonzalezvivo/glslViewer and follow the instructions
+To install glslViewer, go to https://github.com/patriciogonzalezvivo/glslViewer and follow the instructions.
 
 Note: By default will be installed on ```/usr/local/bin``` if that's not the case edit it the ```glslViewer.sublime-settings``` file.
 
-Use
-----------
+Usage
+-----
 
-This package also install `OpenGL Shading Language (GLSL)` that defines `source.glsl` so, if you have Automatic Build System turn On, you can lanch glslViewer with Command + B (MacOS) or Control + B (on Linux).
+This package also installs `OpenGL Shading Language (GLSL)` that defines `source.glsl` so, if you have Automatic Build System turned On, you can lanch glslViewer with Command + B (macOS) or Control + B (on Linux).
