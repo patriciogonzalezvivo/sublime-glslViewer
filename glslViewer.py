@@ -30,7 +30,8 @@ def openShader(view):
         if haveExt(shaderFile, '.frag'):
             cmd = []
             cmd.append(settings.get('path')+'glslViewer')
-            # cmd.append(shaderFile)
+            if settings.get('always-on-top'):
+                cmd.append('-l')
             os.chdir(os.path.dirname(shaderFile))
 
             basename = os.path.basename(shaderFile)
