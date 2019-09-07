@@ -1,8 +1,11 @@
 {
-	// Path where glslViewer is installed
-	// If is not installed follow the instractions at https://github.com/patriciogonzalezvivo/glslViewer
-	"path": "/usr/local/bin/",
+    // Path where glslViewer is installed
+    // If is not installed follow the instractions at https://github.com/patriciogonzalezvivo/glslViewer
+    "path": "/usr/local/bin/",
 
-  //  Auto lunch glslViewer when a ".frag" or ".fs" file is open
-  "auto-start": true
+    // Auto lunch glslViewer when a ".frag" or ".fs" file is open
+    "auto-start": true,
+
+    // Always on top
+    "always-on-top": true
 }
