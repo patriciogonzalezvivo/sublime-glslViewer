@@ -1,5 +1,8 @@
 {
-	"path": "/usr/local/bin",
-	"cmd": ["glslViewer", "$file"],
-	"selector": "source.glsl"
+    "path": "/usr/local/bin",
+    "env": {
+        "TERM": "xterm"
+    },
+    "cmd": ["glslViewer", "--noncurses", "$file"],
+    "selector": "source.glsl"
 }
